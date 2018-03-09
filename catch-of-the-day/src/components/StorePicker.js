@@ -1,18 +1,14 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, createRef } from 'react';
 import { getFunName } from '../helpers';
 
 class StorePicker extends Component {
-  myInput = React.CreateRef();
-  constructor() {
-    super()
+  myInput = createRef(); // creates reference for input
 
-    // this.goToStore = this.goToStore.bind(this);
-  }
-
-  goToStore = (e) => { //can be written this way to bind this property to this, instead of line #9
+  goToStore = e => { //can be written this way to bind this property to this, instead of binding in constructor
     e.preventDefault()
+    const storeName = this.myInput.value.value;
 
-    console.log("At the store");
+    this.props.history.push(`/store/${storeName}`);
   }
 
   render() {
