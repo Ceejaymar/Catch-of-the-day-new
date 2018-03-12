@@ -3,6 +3,7 @@ import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
 import sampleFishes from '../sample-fishes';
+import Fish from './Fish';
 
 class App extends Component {
   // Alternative way of creating state
@@ -28,6 +29,9 @@ class App extends Component {
       <div className="catch-of-the-day">
         <div className="menu">
           <Header tagline='Seafood' />
+          <ul className="fishes">
+            { Object.keys(this.state.fishes).map(fish => <Fish key={fish} details={this.state.fishes[fish]} />) }
+          </ul>
         </div>
         <Order />
         <Inventory addFish ={this.addFish} loadSampleFishes={this.loadSampleFishes} />
